@@ -3,6 +3,7 @@
 import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import PokemonCard from "./pokemon-card";
+import { koreanName } from "../lib/pokemonAPI";
 
 interface PokemonListProps {
   pokemonList: any;
@@ -12,16 +13,16 @@ export default function PokemonList({ pokemonList }: PokemonListProps) {
   const [search, setSearch] = useState("");
   const [searchPokemon, setSearchPokemon] = useState([]);
 
-  // const searchItem = (pokemonList: any) => {
-  //   return pokemonList.filter((pokemon: any) =>
-  //     pokemon.koreanName.toLowerCase().includes(search.toLowerCase())
-  //   );
-  // };
+  const searchItem = (pokemonList: any) => {
+    return pokemonList.filter((pokemon: any) =>
+      pokemon.koreanName.includes(search.toLowerCase())
+    );
+  };
 
-  // useEffect(() => {
-  //   const searchResult = searchItem(pokemonList);
-  //   setSearchPokemon(searchResult);
-  // }, [search]);
+  useEffect(() => {
+    const searchResult = searchItem(pokemonList);
+    setSearchPokemon(searchResult);
+  }, [search]);
 
   return (
     <>
@@ -37,7 +38,7 @@ export default function PokemonList({ pokemonList }: PokemonListProps) {
         />
         <h2>Pokemon Collection</h2>
         <div className="card_wrap">
-          {pokemonList.map((pokemon: any) => {
+          {searchPokemon.map((pokemon: any) => {
             return (
               <PokemonCard
                 key={pokemon.id}

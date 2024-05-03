@@ -1,26 +1,30 @@
 const POKEMON_API = "https://pokeapi.co/api/v2/";
 const fetchNum: any = 150;
 export const koreanName: any = [];
-const urls = [];
 
-for (let i = 0; i < fetchNum; i++) {
-  let url = `${POKEMON_API}/pokemon-species/${i + 1}`;
-  urls.push(url);
+export async function getKoreanName(number: number) {
+  const urls = [];
+
+  for (let i = 0; i < fetchNum; i++) {
+    let url = `${POKEMON_API}/pokemon-species/${i + 1}`;
+    urls.push(url);
+  }
+
+  let requests = urls.map((url) => fetch(url));
+
+  Promise.all(requests).then((responses) =>
+    Promise.all(responses.map((res) => res.json())).then((results) => {
+      for (let result of results) {
+        koreanName.push(result.names[2].name);
+      }
+    })
+  );
+  return getPokemonList(number);
 }
 
-let requests = urls.map((url) => fetch(url));
-
-Promise.all(requests).then((responses) =>
-  Promise.all(responses.map((res) => res.json())).then((results) => {
-    for (let result of results) {
-      koreanName.push(result.names[2].name);
-    }
-  })
-);
-
-export async function getPokemonList() {
+export async function getPokemonList(number: number) {
   const response = await fetch(
-    POKEMON_API + `pokemon?limit=${fetchNum}&offset=0`
+    POKEMON_API + `pokemon?limit=${number}&offset=0`
   );
   const data = await response.json();
 

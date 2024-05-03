@@ -1,9 +1,10 @@
 import Image from "next/image";
 import PokemonList from "./components/pokemon-list";
-import { getPokemonList } from "./lib/pokemonAPI";
+import { getKoreanName, getPokemonList } from "./lib/pokemonAPI";
 
 export default async function Home() {
-  const getPokemonData = await getPokemonList();
+  const getPokemonData = await getKoreanName(10);
+
   return (
     <main className="main">
       <h1>Next Pokemon App</h1>
