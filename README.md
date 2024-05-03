@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+<div align="center">
+  <h3 align="center">Pokemon App</h3>
+
+  <p align="center">
+    Next.js + Pokemon API를 활용한 포켓몬 도감입니다.
+    <br />
+    <br />
+    <a href="https://next-pokemon-beige.vercel.app/">View Demo</a>
+    ·
+    <a href="https://github.com/yunamoon/next-pokemon">Blog</a>
+  </p>
+</div>
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+다양한 포켓몬 리스트를 확인하고, 그 중 원하는 포켓몬을 골라 상세 정보를 확인할 수 있습니다.
+
+What did I do:
+* 오픈 API를 활용한 데이터 파싱
+* 게시글 무한 스크롤
+* 게시글 상세 보기
+
+Tech Stack:
+* TypeScript, Next, Tailwind css, Material UI 
+
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-First, run the development server:
+프로젝트를 로컬로 설정하는 방법에 대한 지침을 제공하는 예시입니다. 로컬 복사본을 설치하고 실행하려면 다음과 같은 간단한 예제 단계를 따라야 합니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### After Project Clones
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* npm
+  ```sh
+  npm install npm@latest -g
+  npm init
+  npm run dev
+  ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Modification required
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+별두 수정 사항이 없습니다.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+<!-- LICENSE -->
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pokemon open API
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+<!-- CONTACT -->
+## Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Yuna moon - tpwkao0051@gmail.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Project Link: https://github.com/yunamoon/next-pokemon
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
