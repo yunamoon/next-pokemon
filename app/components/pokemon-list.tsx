@@ -16,8 +16,8 @@ export default function PokemonList({ pokemonList }: PokemonListProps) {
   const [end, setEnd] = useState<number>(10);
 
   const searchItem = (pokemonList: any) => {
-    return pokemonList?.filter((pokemon: any) =>
-      pokemon.koreanName?.includes(search.toLowerCase())
+    return pokemonList.filter((pokemon: any) =>
+      pokemon.koreanName.includes(search.toLowerCase())
     );
   };
 
