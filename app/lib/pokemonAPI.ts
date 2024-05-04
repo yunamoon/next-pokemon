@@ -1,5 +1,5 @@
 const POKEMON_API = "https://pokeapi.co/api/v2/";
-const fetchNum: any = 150;
+const fetchNum: any = 1000;
 export const koreanName: any = [];
 
 export async function getKoreanName(number: number) {
@@ -12,14 +12,14 @@ export async function getKoreanName(number: number) {
 
   let requests = urls.map((url) => fetch(url));
 
-  Promise.all(requests).then((responses) =>
-    Promise.all(responses.map((res) => res.json())).then((results) => {
+  return Promise.all(requests)
+    .then((responses) => Promise.all(responses.map((res) => res.json())))
+    .then((results) => {
       for (let result of results) {
         koreanName.push(result.names[2].name);
       }
-    })
-  );
-  return getPokemonList(number);
+      return getPokemonList(number);
+    });
 }
 
 export async function getPokemonList(number: number) {
@@ -27,7 +27,6 @@ export async function getPokemonList(number: number) {
     POKEMON_API + `pokemon?limit=${number}&offset=0`
   );
   const data = await response.json();
-
   const loadPokemon = data.results.map((pokemon: any, index: any) => {
     return {
       id: index + 1,

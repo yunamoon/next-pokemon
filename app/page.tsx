@@ -3,7 +3,8 @@ import PokemonList from "./components/pokemon-list";
 import { getKoreanName, getPokemonList } from "./lib/pokemonAPI";
 
 export default async function Home() {
-  const getPokemonData = await getKoreanName(10);
+  let fetchNumber = 1000;
+  const getPokemonData = await getKoreanName(fetchNumber);
 
   return (
     <main className="main">
