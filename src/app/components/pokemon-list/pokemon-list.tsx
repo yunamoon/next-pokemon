@@ -27,7 +27,7 @@ export default function PokemonList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchedData = await getPokemonData(50); // 1000개의 포켓몬 데이터를 가져옴
+        const fetchedData = await getPokemonData(100); // 1000개의 포켓몬 데이터를 가져옴
         setPokemonData(fetchedData);
         setSearchPokemon(fetchedData);
       } catch (error) {
