@@ -9,7 +9,7 @@ import style from "./pokemon-card.module.css";
 import { PokemonProps } from "../../lib/pokemonProps";
 import { getColorCard } from "./custom/getColorCard";
 
-export default function PokemonCard({ ...pokemonData }: PokemonProps) {
+export default function PokemonDetailCard({ ...pokemonData }: PokemonProps) {
   return (
     <Link
       className={style.link}
@@ -30,11 +30,11 @@ export default function PokemonCard({ ...pokemonData }: PokemonProps) {
           className="card_img"
         />
         <CardContent className={style.content}>
-          <div className={style.types}>
+          {/* <Typography variant="body2" className={style.types}>
             {pokemonData.types.map((item: any, index: string) => {
               return <div key={index}>{item.type.name}</div>;
             })}
-          </div>
+          </Typography> */}
         </CardContent>
       </Card>
     </Link>

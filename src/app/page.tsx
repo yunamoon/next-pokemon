@@ -1,6 +1,7 @@
 import PokemonList from "./components/pokemon-list/pokemon-list";
 import style from "./home.module.css";
 import Header from "./components/header/header";
+
 import { PokemonListProps, PokemonProps } from "./lib/pokemonProps";
 
 export default async function Home() {

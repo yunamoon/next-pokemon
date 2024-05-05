@@ -8,7 +8,7 @@ import { handleScroll } from "../../util/handleScroll";
 import style from "./pokemon-list.module.css";
 
 import { CssTextField } from "./custom/cssTextField";
-import { getPokemonData, getPokemonList } from "@/lib/pokemonAPI";
+import { getPokemonData } from "@/lib/getPokemonData";
 
 export default function PokemonList() {
   // 데이터
@@ -37,7 +37,6 @@ export default function PokemonList() {
     fetchData();
   }, []);
 
-  console.log(pokemonData);
   // 검색
   const searchItem = (pokemonList: any) => {
     return pokemonList.filter((pokemon: any) =>
