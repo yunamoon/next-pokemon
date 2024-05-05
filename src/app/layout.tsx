@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
-const inter = Inter({ subsets: ["latin"] });
+import Image from "next/image";
+import back from "../../public/image/back.jpg";
+import Header from "./components/header/header";
 
 export const metadata: Metadata = {
   title: "Next Pokemon App",
@@ -16,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <main>
+          <Header />
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

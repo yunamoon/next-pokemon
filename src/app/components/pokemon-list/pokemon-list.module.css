@@ -1,0 +1,23 @@
+.list {
+  margin-top: 55px;
+}
+
+.list .input_wrap {
+  padding: 15px;
+  margin-bottom: 50px;
+  background-color: #424760c0;
+  border-radius: 15px;
+  box-shadow: -5px 5px 10px 10px rgba(8, 13, 20, 0.172);
+}
+.list .input {
+  width: 100%;
+}
+
+.list .card_wrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
