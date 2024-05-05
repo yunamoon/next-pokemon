@@ -79,7 +79,7 @@ export default function PokemonList() {
             />
           </div>
           <div className={style.card_wrap}>
-            {searchPokemon.slice(start, end).map((pokemon: any) => {
+            {searchPokemon.slice(start, end).map((pokemon: PokemonProps) => {
               return <PokemonCard key={pokemon.id} {...pokemon} />;
             })}
           </div>

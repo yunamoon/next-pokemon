@@ -1,12 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import "./pokemon-detail.module.css";
 import { useParams } from "next/navigation";
 import PokemonCard from "../pokemon-card/pokemon-card";
-import { PokemonProps } from "../../lib/pokemonProps";
 import { getDetailPokemon } from "@/lib/getDetailPokemon";
-import testCard from "../pokemon-card/pokemon-detail-card";
-import PokemonDetailCard from "../pokemon-card/pokemon-detail-card";
+import style from "./pokemon-detail.module.css";
+import { PokemonProps } from "../../lib/pokemonProps";
 
 export default function PokemonDetail() {
   const [pokemonData, setPokemonData] = useState<any>();
@@ -24,25 +22,87 @@ export default function PokemonDetail() {
     fetchData();
   }, [params]);
 
-  return (
-    <div>
-      {/* ability: "overgrow"
-      color: "green" 
-      description: "꽃봉오리가 등에 붙어 있으며\n양분을 흡수해가면\n커다란 꽃이 핀다고 한다."
-      egg_groups: "plant"
-      enName: "ivysaur"
-      genera: "씨앗포켓몬"
-      generation : "generation-i"
-      growth_rate : "medium-slow"
-      habitat: "grassland"
-      height: 7
-      id: 2 
-      image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-      name:  "이상해풀"
-      types: (2) [{…}, {…}]
-      weight: 69*/}
+  console.log(pokemonData);
 
-      <PokemonDetailCard {...pokemonData} />
-    </div>
+  return (
+    <>
+      {pokemonData ? (
+        <div className={style.detail}>
+          {/* 
+    
+
+      General : 
+      서식지 : habitat 
+      군 : egg_groups
+      일반분류: genera
+      세대 : generation 
+      성장 속도 :  growth_rate 
+
+      Physical : 
+      키 : height
+      몸무게 :  weight
+
+      Special note
+      능력 :  ability 
+      특성 :   types 
+      설명 :  description */}
+
+          <PokemonCard {...pokemonData} />
+
+          <div className={style.contetns}>
+            <table className={style.table}>
+              <tr>
+                <th colSpan={2}>General</th>
+                <th colSpan={2}>Physical</th>
+              </tr>
+
+              <tr>
+                <td>일반분류</td>
+                <td>{pokemonData.genera}</td>
+                <td>키</td>
+                <td>{pokemonData.height} cm</td>
+              </tr>
+
+              <tr>
+                <td>서식지</td>
+                <td>{pokemonData.habitat}</td>
+                <td>몸무게</td>
+                <td>{pokemonData.weight} g</td>
+              </tr>
+              <tr>
+                <td>군</td>
+                <td>{pokemonData.egg_groups}</td>
+                <td>성장 속도</td>
+                <td>{pokemonData.growth_rate}</td>
+              </tr>
+
+              <tr>
+                <th colSpan={2}>Special note</th>
+              </tr>
+              <tr>
+                <td>능력</td>
+                <td>{pokemonData.weight}</td>
+              </tr>
+              <tr>
+                <td>특성</td>
+                <td>
+                  {pokemonData.types?.map((item: any, index: string) => {
+                    return <p key={index}>{item.type.name}</p>;
+                  })}
+                </td>
+              </tr>
+              <tr>
+                <td>설명</td>
+                <td colSpan={4}>
+                  {pokemonData.description.split("\n").join("")}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 }

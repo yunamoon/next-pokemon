@@ -11,11 +11,7 @@ import { getColorCard } from "./custom/getColorCard";
 
 export default function PokemonCard({ ...pokemonData }: PokemonProps) {
   return (
-    <Link
-      className={style.link}
-      href={`/detail/${pokemonData.enName}`}
-      key={name + "card"}
-    >
+    <Link className={style.link} href={`/detail/${pokemonData.enName}`}>
       <Card
         sx={{ maxWidth: 345 }}
         className={`${style.card} ${getColorCard(pokemonData.color)}`}
@@ -23,15 +19,16 @@ export default function PokemonCard({ ...pokemonData }: PokemonProps) {
         <Typography className={style.title} variant="h5" component="div">
           {pokemonData.name}
         </Typography>
+        <p className={style.sub}> {pokemonData.enName}</p>
         <CardMedia
           component="img"
-          alt={`${name}`}
+          alt={`${pokemonData.name} img`}
           image={pokemonData.image}
           className="card_img"
         />
         <CardContent className={style.content}>
           <div className={style.types}>
-            {pokemonData.types.map((item: any, index: string) => {
+            {pokemonData.types?.map((item: any, index: string) => {
               return <div key={index}>{item.type.name}</div>;
             })}
           </div>
