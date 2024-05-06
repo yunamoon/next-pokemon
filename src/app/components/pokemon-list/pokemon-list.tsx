@@ -30,16 +30,21 @@ export default function PokemonList() {
   const fetchData = async () => {
     try {
       const fetchedData = await getPokemonData(startPoint, endPoint); // 1000개의 포켓몬 데이터를 가져옴
-      setPokemonData((prevData) => [...prevData, ...fetchedData]);
-      setSearchPokemon((prevData) => {
-        // 이전 데이터와 새로운 데이터를 합친 후 중복을 제거하여 반환
+      setPokemonData((prevData) => {
         const mergedData = [...prevData, ...fetchedData];
         const uniqueData = mergedData.filter((item, index) => {
           return mergedData.findIndex((elem) => elem.id === item.id) === index;
         });
         return uniqueData;
       });
-      if (pokemonData.length < 500) {
+      setSearchPokemon((prevData) => {
+        const mergedData = [...prevData, ...fetchedData];
+        const uniqueData = mergedData.filter((item, index) => {
+          return mergedData.findIndex((elem) => elem.id === item.id) === index;
+        });
+        return uniqueData;
+      });
+      if (pokemonData.length < 1000) {
         startPoint = endPoint;
         endPoint = endPoint + 10;
         await fetchData();
