@@ -18,7 +18,6 @@ export default function PokemonCard({ ...pokemonData }: PokemonProps) {
       >
         <Typography className={style.title} variant="h5" component="div">
           {pokemonData.name}
-          {pokemonData.color}
         </Typography>
         <p className={style.sub}> {pokemonData.enName}</p>
         <CardMedia

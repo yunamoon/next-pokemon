@@ -46,7 +46,7 @@ export default function PokemonList() {
       });
       if (pokemonData.length < 1000) {
         startPoint = endPoint;
-        endPoint = endPoint + 10;
+        endPoint = endPoint + 20;
         await fetchData();
       }
     } catch (error) {
@@ -74,7 +74,7 @@ export default function PokemonList() {
     const scroll = handleScroll();
     console.log(scroll);
     if (scroll) {
-      setEnd((prevEnd) => prevEnd + 10);
+      setEnd((prevEnd) => prevEnd + 20);
       setScrollToBottom(true);
     }
   };
