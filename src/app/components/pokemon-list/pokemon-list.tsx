@@ -46,7 +46,7 @@ export default function PokemonList() {
       });
       if (pokemonData.length < 1000) {
         startPoint = endPoint;
-        endPoint = endPoint + 25;
+        endPoint = endPoint + 20;
         await fetchData();
       }
     } catch (error) {
