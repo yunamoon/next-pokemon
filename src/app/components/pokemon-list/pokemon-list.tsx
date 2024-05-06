@@ -37,17 +37,17 @@ export default function PokemonList() {
         });
         return uniqueData;
       });
-      setSearchPokemon((prevData) => {
-        const mergedData = [...prevData, ...fetchedData];
-        const uniqueData = mergedData.filter((item, index) => {
-          return mergedData.findIndex((elem) => elem.id === item.id) === index;
-        });
-        return uniqueData;
-      });
-      if (pokemonData.length < 1000) {
+      // setSearchPokemon((prevData) => {
+      //   const mergedData = [...prevData, ...fetchedData];
+      //   const uniqueData = mergedData.filter((item, index) => {
+      //     return mergedData.findIndex((elem) => elem.id === item.id) === index;
+      //   });
+      //   return uniqueData;
+      // });
+      if (endPoint < 1000) {
         startPoint = endPoint;
         endPoint = endPoint + 20;
-        await fetchData();
+        fetchData();
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -67,7 +67,7 @@ export default function PokemonList() {
   useEffect(() => {
     const searchResult = searchItem(pokemonData);
     setSearchPokemon(searchResult);
-  }, [search]);
+  }, [search, pokemonData]);
 
   // 스크롤 이벤트
   const handleEndPoint = () => {
