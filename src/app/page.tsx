@@ -1,3 +1,4 @@
+//test
 import PokemonList from "./components/pokemon-list/pokemon-list";
 import style from "./home.module.css";
 import Header from "./components/header/header";
