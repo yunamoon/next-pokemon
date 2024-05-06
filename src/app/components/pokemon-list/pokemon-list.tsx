@@ -24,7 +24,7 @@ export default function PokemonList() {
   const [end, setEnd] = useState<number>(10);
 
   // 데이터 패치
-  let endPoint = 50;
+  let endPoint = 20;
   let startPoint = 0;
 
   const fetchData = async () => {
@@ -46,7 +46,7 @@ export default function PokemonList() {
       });
       if (pokemonData.length < 1000) {
         startPoint = endPoint;
-        endPoint = endPoint + 50;
+        endPoint = endPoint + 25;
         await fetchData();
       }
     } catch (error) {
@@ -100,14 +100,21 @@ export default function PokemonList() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <div className={style.card_wrap}>
-            {searchPokemon.slice(start, end).map((pokemon: any) => {
-              return <PokemonCard key={pokemon.id} {...pokemon} />;
-            })}
-          </div>
+
+          {searchPokemon.length === 0 ? (
+            <div className={style.card_wrap}>
+              <h2 className={style.loading}>Data loading ...</h2>
+            </div>
+          ) : (
+            <div className={style.card_wrap}>
+              {searchPokemon.slice(start, end).map((pokemon: any) => {
+                return <PokemonCard key={pokemon.id} {...pokemon} />;
+              })}
+            </div>
+          )}
         </div>
       ) : (
-        <div className="data-loading">Data loading ... </div>
+        <h2>Data loading ...</h2>
       )}
     </>
   );
