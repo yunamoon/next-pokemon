@@ -24,7 +24,7 @@ export default function PokemonList() {
   const [end, setEnd] = useState<number>(10);
 
   // 데이터 패치
-  let endPoint = 20;
+  let endPoint = 50;
   let startPoint = 0;
 
   const fetchData = async () => {
