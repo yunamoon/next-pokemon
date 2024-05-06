@@ -8,7 +8,6 @@ const nextConfig = {
       },
     ],
   },
-  basePath: "/next-pokemon",
 };
 
 export default nextConfig;
