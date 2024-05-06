@@ -19,6 +19,8 @@ export const getColorCard = (color: string) => {
       return style.grayCard;
     case "white":
       return style.whiteCard;
+    case "black":
+      return style.blackCard;
     default:
       return style.defaultCard;
   }
