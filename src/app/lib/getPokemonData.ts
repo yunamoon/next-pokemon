@@ -3,11 +3,11 @@ import { PokemonProps } from "./pokemonProps";
 
 const POKEMON_API = "https://pokeapi.co/api/v2";
 
-export async function getPokemonData(number: number) {
+export async function getPokemonData(start: number, end: number) {
   const pokemonList: PokemonProps[] = [];
 
   try {
-    for (let i = 0; i < number; i++) {
+    for (let i = start; i < end; i++) {
       const speciesUrl = `${POKEMON_API}/pokemon-species/${i + 1}`;
       const speciesResponse = await fetch(speciesUrl);
 

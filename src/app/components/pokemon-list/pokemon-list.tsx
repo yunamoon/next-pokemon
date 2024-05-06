@@ -19,21 +19,36 @@ export default function PokemonList() {
   const [searchPokemon, setSearchPokemon] = useState<PokemonProps[]>([]);
 
   // 스크롤 이벤트
-  const [scrollToBottom, setScrollToBottom] = useState(false);
+  const [scrollToBottom, setScrollToBottom] = useState<boolean>();
   const [start, setStart] = useState<number>(0);
   const [end, setEnd] = useState<number>(10);
 
   // 데이터 패치
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fetchedData = await getPokemonData(100); // 1000개의 포켓몬 데이터를 가져옴
-        setPokemonData(fetchedData);
-        setSearchPokemon(fetchedData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+  let endPoint = 10;
+  let startPoint = 0;
+
+  const fetchData = async () => {
+    try {
+      const fetchedData = await getPokemonData(startPoint, endPoint); // 1000개의 포켓몬 데이터를 가져옴
+      setPokemonData((prevData) => [...prevData, ...fetchedData]);
+      setSearchPokemon((prevData) => {
+        // 이전 데이터와 새로운 데이터를 합친 후 중복을 제거하여 반환
+        const mergedData = [...prevData, ...fetchedData];
+        const uniqueData = mergedData.filter((item, index) => {
+          return mergedData.findIndex((elem) => elem.id === item.id) === index;
+        });
+        return uniqueData;
+      });
+      if (pokemonData.length < 500) {
+        startPoint = endPoint;
+        endPoint = endPoint + 10;
+        await fetchData();
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -52,8 +67,10 @@ export default function PokemonList() {
   // 스크롤 이벤트
   const handleEndPoint = () => {
     const scroll = handleScroll();
+    console.log(scroll);
     if (scroll) {
-      setEnd((prevEnd) => prevEnd + 20);
+      setEnd((prevEnd) => prevEnd + 10);
+      setScrollToBottom(true);
     }
   };
 
