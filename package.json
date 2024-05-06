@@ -2,14 +2,11 @@
   "name": "next-pokemon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://yunamoon.github.io/next-pokemon",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
